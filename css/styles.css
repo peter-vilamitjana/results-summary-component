@@ -23,7 +23,7 @@ body {
 /*------------------- conteiners ------------------- */
 
 .container {
-    width: 500px;
+    width: 800px;
     height: 500px;
     padding: 20px;
     display: flex;
@@ -37,7 +37,7 @@ body {
     color: #ffffff;
     background: rgb(46, 43, 233);
     background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
-    width: 80%;
+    width: 50%;
     height: 100%;
     border-radius: 15px;
     padding: 15px;
@@ -85,13 +85,94 @@ p {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
+    justify-content: space-between;
+
     border-radius: 0px 15px 15px 0;
-    padding: 15px;
+    padding: 15px 40px;
 }
 
-.summaryBox > * {
-    border: 1px solid black;
+.summaryBox h3 {
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 22px 0;
+    text-align: left;
+    /* padding: 10px; */
+}
+
+/*------------------- icons ------------------- */
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/*------------------- scores ------------------- */
+
+.scores {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+}
+
+.reactionScore,
+.memoryScore,
+.verbalScore,
+.visualScore {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 1px solid red; */
+    border-radius: 15px;
+}
+
+.reactionScore p.color {
+    color: #ff5757;
+}
+
+.memoryScore p.color {
+    color: #ffb01f;
+}
+
+.verbalScore p.color {
+    color: #00bd91;
+}
+
+.visualScore p.color {
+    color: #1125d4;
+}
+
+.reactionScore {
+    background-color: #fff7f8;
+}
+
+.memoryScore {
+    background-color: #fff9f6;
+}
+
+.verbalScore {
+    background-color: #f2fdf9;
+}
+
+.visualScore {
+    background-color: #f5f3ff;
+}
+
+/*------------------- button -------------------*/
+
+.btn {
+    background-color: #303b59;
+    height: 50px;
+    border-radius: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 25px 0;
+    border: none;
+}
+
+.btn:hover {
+    background: rgb(46, 43, 233);
+    background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
+
+    transition: all 3s ease-in;
 }
