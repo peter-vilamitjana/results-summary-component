@@ -37,7 +37,7 @@ body {
     color: #ffffff;
     background: rgb(46, 43, 233);
     background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
-    width: 50%;
+    width: 42%;
     height: 100%;
     border-radius: 15px;
     padding: 15px;
@@ -48,12 +48,18 @@ body {
     text-align: center;
 }
 
+p {
+    font-size: 1rem;
+}
 .resultBox h3,
 p {
     opacity: 0.68;
     font-weight: 500;
-    font-size: 1rem;
     padding: 10px;
+}
+
+h3 {
+    font-size: 1.4rem;
 }
 
 /* ----------- circle inside box  ------------*/
@@ -75,6 +81,7 @@ p {
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.44;
+    padding-top: 0;
 }
 
 /*------------------- summary ------------------- */
@@ -93,10 +100,10 @@ p {
 
 .summaryBox h3 {
     font-weight: 500;
-    font-size: 1rem;
     margin: 22px 0;
     text-align: left;
     /* padding: 10px; */
+    color: hsl(224, 30%, 27%);
 }
 
 /*------------------- icons ------------------- */
@@ -124,6 +131,7 @@ p {
     align-items: center;
     /* border: 1px solid red; */
     border-radius: 15px;
+    height: 50px;
 }
 
 .reactionScore p.color {
@@ -168,11 +176,16 @@ p {
     color: #ffffff;
     margin: 25px 0;
     border: none;
+    cursor: pointer;
+    transition: background-color 0.8s ease-in-out;
 }
 
 .btn:hover {
     background: rgb(46, 43, 233);
     background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
+    transition: background-color 2s ease-in;
+}
 
-    transition: all 3s ease-in;
+.btn:not(:hover) {
+    transition: background-color 0.2s ease-out;
 }
