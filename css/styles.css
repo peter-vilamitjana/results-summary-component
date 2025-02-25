@@ -72,16 +72,18 @@ h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 100%;
+    border-radius: 50%;
     font-size: 1.6rem;
     margin: 10px 0;
+    text-align: center;
 }
 
 .circle p {
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.44;
-    padding-top: 0;
+    /* padding-top: 0; */
+    padding: 0;
 }
 
 /*------------------- summary ------------------- */
@@ -122,14 +124,18 @@ h3 {
     height: 250px;
 }
 
-.reactionScore,
-.memoryScore,
-.verbalScore,
-.visualScore {
+.left {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
-    /* border: 1px solid red; */
+    margin-right: 30px;
+    width: 30%;
+}
+
+.scoreBoxes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     border-radius: 15px;
     height: 50px;
 }
@@ -188,4 +194,106 @@ h3 {
 
 .btn:not(:hover) {
     transition: background-color 0.2s ease-out;
+}
+
+/*------------------- media query -------------------*/
+
+/* @media screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+    }
+
+    .resultBox {
+        width: 100%;
+        height: 40%;
+        border-radius: 0 0 25px 25px;
+    }
+
+    .circle {
+        width: 130px;
+        height: 130px;
+    }
+
+    .summaryBox {
+        width: 100%;
+        height: 100%;
+        justify-content: space-evenly;
+        padding: 0 40px;
+        border-radius: 0;
+        font-weight: bold;
+    }
+
+    .scores {
+        height: 60%;
+    }
+
+    .scoreBoxes {
+        height: 70px;
+    }
+
+    .resultBox > p {
+        width: 70vw;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+    }
+} */
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Cambiado a flex-start para mejor ajuste */
+        align-items: center;
+        text-align: center;
+        padding: 0;
+    }
+
+    .resultBox {
+        width: 100%;
+        height: 45%; /* Ajustado para mejor proporción */
+        border-radius: 0 0 25px 25px;
+        padding: 10px; /* Reducido el padding */
+    }
+
+    .circle {
+        width: 120px; /* Ajustado para pantallas pequeñas */
+        height: 120px;
+    }
+
+    .summaryBox {
+        width: 100%;
+        height: 55%; /* Ajustado para mejor proporción */
+        justify-content: space-evenly;
+        padding: 10px 20px; /* Reducido el padding */
+        border-radius: 0;
+    }
+
+    .scores {
+        height: 70%; /* Ajustado para mejor uso del espacio */
+    }
+
+    .scoreBoxes {
+        height: 60px; /* Ajustado para pantallas pequeñas */
+    }
+
+    .resultBox > p {
+        width: 80%; /* Ajustado para mejor lectura */
+        margin: 0 auto; /* Centrado */
+    }
+
+    .btn {
+        font-size: 1rem; /* Ajustado para pantallas pequeñas */
+        margin: 15px 0; /* Reducido el margen */
+    }
 }
