@@ -1,299 +1,253 @@
-/*------------------- defaults -------------------  */
-* {
-    margin: 0;
-    padding: 0;
+@font-face {
+    font-family: 'Hanken Grotesk';
+    display: swap; /* Usa una fuente alternativa mientras se carga la personalizada */
+    src: url(/assets/fonts/HankenGrotesk-VariableFont_wght.ttf) format('truetype');
+    font-weight: 100 900;
+}
+
+:root {
+    /* Declaro las variables de los colores */
+    /* Primero  : Defino los colores en HSL sin la función hsl(), lo que permite reutilizarlos en distintos contextos (colores sólidos, transparencias, degradados). */
+
+    /* colores primarios */
+    --clr-primary-hsl-400: 252, 100%, 67%;
+    --clr-primary-hsl-500: 256, 72%, 46%;
+    --clr-secondary-hsl-400: 241, 81%, 54%;
+    --clr-secondary-hsl-500: 241, 72%, 46%;
+
+    /* declaro los gradiants */
+
+    --clr-gradient-hsl-slate: 252, 100%, 67%;
+    --clr-gradient-hsl-royal: 241, 81%, 54%;
+    --clr-circle-hsl-violet: 256, 72%, 46%;
+    --clr-circle-hsl-persian: 241, 72%, 46%;
+
+    /* neutros */
+    --clr-neutral-hsl-100: 0, 0%, 100%;
+    --clr-neutral-hsl-200: 221, 100%, 96%;
+    --clr-neutral-hsl-300: 241, 100%, 89%;
+    --clr-neutral-hsl-700: 224, 30%, 27%;
+
+    /* Luego, creo variables finales (--clr-primary-400, etc.) que los convierten en hsl() o hsla().   */
+
+    /* Variables finales en `hsl()` */
+
+    --clr-neutral-100: hsl(var(--clr-neutral-hsl-100));
+    --clr-neutral-200: hsl(var(--clr-neutral-hsl-200));
+    --clr-neutral-300: hsl(var(--clr-neutral-hsl-300));
+    --clr-neutral-700: hsl(var(--clr-neutral-hsl-700));
+
+    --clr-primary-400: hsl(var(--clr-primary-hsl-400));
+    --clr-primary-500: hsla(var(--clr-primary-hsl-500));
+    --clr-secondary-400: hsl(var(--clr-secondary-hsl-400));
+
+    /*------ Gradientes (Background & Circle en HSL)------*/
+    --gradient-primary: linear-gradient(var(--clr-primary-400), var(--clr-secondary-400));
+    --gradient-to-transparent: linear-gradient(var(--clr-primary-500), hsl(var(--clr-secondary-hsl-500), 0));
+
+    /* fonts  */
+    --font-family: 'Hanken Grotesk';
+
+    /* weight  */
+    --fw-regular: 500;
+    --fw-bold: 700;
+    --fw-black: 800;
+
+    /* sizes  */
+
+    --fs-400: 1.125rem;
+    --fs-500: 1.25rem;
+    --fs-600: 1.5rem;
+    --fs-700: 1.75rem;
+    --fs-800: 2rem;
+    --fs-900: 5rem;
+
+    --clr-accent-1: 0, 100%, 67%;
+    --clr-accent-2: 39, 100%, 56%;
+    --clr-accent-3: 166, 100%, 37%;
+    --clr-accent-4: 234, 85%, 45%;
+}
+
+/*------------------- Reseteo simple -------------------  */
+*,
+*::after,
+*::before {
     box-sizing: border-box;
 }
 
-html,
-body {
-    height: 100%;
+* {
+    margin: 0;
+    font: inherit;
+    /* Me obliga a mi utilizar clases para declarar como se veran los fonts 
+    en vez de usar niveles de encabezado de forma incorrecta  */
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
 }
 
 body {
-    background-color: #ecf2ff;
-    font-family: 'Hanken Grotesk', serif;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    font-family: var(--font-family);
+    font-size: var(--fs-400);
+    color: var(--clr-neutral-700);
 }
 
-/*------------------- conteiners ------------------- */
+.section-title {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-600);
+}
+
+/* editamos el boton */
+
+.button {
+    color: var(--clr-neutral-100);
+    line-height: 1;
+    background: var(--clr-neutral-700);
+    padding: 1rem 2rem;
+    border: 0;
+    border-radius: 100vw;
+    /* me aseguro de que tenga los bordes bien redondeados */
+    cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+    background: var(--gradient-primary);
+}
+
+/* result summary */
 
 .container {
-    width: 800px;
-    height: 500px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    max-width: 46rem;
+    display: grid;
+    --border-radius: 2em;
+    --padding: 2.5rem;
 }
-
-/*------------------- results ------------------- */
 
 .resultBox {
-    color: #ffffff;
-    background: rgb(46, 43, 233);
-    background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
-    width: 42%;
-    height: 100%;
-    border-radius: 15px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    color: hsl(var(--clr-neutral-hsl-100), 0.7);
+    padding: var(--padding);
     text-align: center;
+    background: var(--gradient-primary);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
-p {
-    font-size: 1rem;
-}
-.resultBox h3,
-p {
-    opacity: 0.68;
-    font-weight: 500;
-    padding: 10px;
-}
-
-h3 {
-    font-size: 1.4rem;
-}
-
-/* ----------- circle inside box  ------------*/
-
-.circle {
-    width: 200px;
-    height: 200px;
-    background: rgb(74, 60, 241);
-    background: linear-gradient(0deg, rgba(74, 60, 241, 1) 0%, rgba(77, 35, 202, 1) 100%);
+.flex-group {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.grid-flow {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+}
+
+.grid-flow [data-spacing='large'] {
+    gap: 2rem;
+}
+
+.result-score {
+    display: grid;
+    place-content: center;
+    width: 12rem;
+    margin-inline: auto;
+    background: var(--gradient-to-transparent);
+    aspect-ratio: 1/1;
     border-radius: 50%;
-    font-size: 1.6rem;
-    margin: 10px 0;
-    text-align: center;
 }
 
-.circle p {
-    font-size: 1rem;
-    font-weight: 400;
-    opacity: 0.44;
-    /* padding-top: 0; */
-    padding: 0;
+.result-score span {
+    display: block;
+    font-size: var(--fs-900);
+    font-weight: var(--fw-black);
+    line-height: 1;
+    color: var(--clr-neutral-100);
 }
 
-/*------------------- summary ------------------- */
+.result-rank {
+    color: var(--clr-neutral-100);
+    font-size: var(--fs-700);
+    font-weight: var(--fw-bold);
+}
 
-.summaryBox {
-    width: 50%;
-    height: 100%;
-    background-color: #ffffff;
+.summary {
+    padding: var(--padding);
+}
+
+.summary-item {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-
-    border-radius: 0px 15px 15px 0;
-    padding: 15px 40px;
-}
-
-.summaryBox h3 {
-    font-weight: 500;
-    margin: 22px 0;
-    text-align: left;
-    /* padding: 10px; */
-    color: hsl(224, 30%, 27%);
-}
-
-/*------------------- icons ------------------- */
-
-.icon {
-    width: 20px;
-    height: 20px;
-}
-
-/*------------------- scores ------------------- */
-
-.scores {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 250px;
-}
-
-.left {
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
-    margin-right: 30px;
-    width: 30%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--item-color), 0.1);
 }
 
-.scoreBoxes {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 15px;
-    height: 50px;
+.summary-item svg {
+    stroke: hsl(var(--item-color));
+    /** aca los iconos toman el color del data-item-type='accent-x' */
 }
 
-.reactionScore p.color {
-    color: #ff5757;
+/* titles */
+
+.summary-item-title {
+    color: hsl(var(--item-color));
+    font-weight: var(--fw-bold);
+    /** aca los titles toman el color del --item-color */
 }
 
-.memoryScore p.color {
-    color: #ffb01f;
+/*! es muy interesante aca el comportamiento que tiene --item-color */
+/*! analizar la logica detras de los 'custom properties' */
+/*? como se comportan los -- data-item-type='accent-1' -- que ventajas tienen usarlos  */
+
+.summary-item[data-item-type='accent-1'] {
+    --item-color: var(--clr-accent-1);
 }
 
-.verbalScore p.color {
-    color: #00bd91;
+.summary-item[data-item-type='accent-2'] {
+    --item-color: var(--clr-accent-2);
 }
 
-.visualScore p.color {
-    color: #1125d4;
+.summary-item[data-item-type='accent-3'] {
+    --item-color: var(--clr-accent-3);
 }
 
-.reactionScore {
-    background-color: #fff7f8;
+.summary-item[data-item-type='accent-4'] {
+    --item-color: var(--clr-accent-4);
 }
 
-.memoryScore {
-    background-color: #fff9f6;
+.summary-score {
+    font-weight: var(--fw-black);
+    color: hsl(var(--clr-neutral-hsl-700), 0.7);
 }
 
-.verbalScore {
-    background-color: #f2fdf9;
+.summary-score span {
+    color: var(--clr-neutral-700);
 }
 
-.visualScore {
-    background-color: #f5f3ff;
-}
+/* media query */
 
-/*------------------- button -------------------*/
-
-.btn {
-    background-color: #303b59;
-    height: 50px;
-    border-radius: 30px;
-    font-weight: 500;
-    color: #ffffff;
-    margin: 25px 0;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.8s ease-in-out;
-}
-
-.btn:hover {
-    background: rgb(46, 43, 233);
-    background: linear-gradient(0deg, rgba(46, 43, 233, 1) 0%, rgba(120, 87, 255, 1) 100%);
-    transition: background-color 2s ease-in;
-}
-
-.btn:not(:hover) {
-    transition: background-color 0.2s ease-out;
-}
-
-/*------------------- media query -------------------*/
-
-/* @media screen and (max-width: 800px) {
-    .container {
-        width: 100%;
+@media (min-width: 600px) {
+    body {
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0;
+        /* it would center things at larger screen sizes  */
+        display: grid;
+        place-items: center;
+    }
+
+    .container {
+        margin-inline: 1rem;
+        grid-template-columns: 1fr 1fr;
+        border-radius: var(--border-radius);
+        box-shadow: 0.5rem 1rem 3rem hsl(var(--clr-neutral-hsl-700), 0.2);
     }
 
     .resultBox {
-        width: 100%;
-        height: 40%;
-        border-radius: 0 0 25px 25px;
-    }
-
-    .circle {
-        width: 130px;
-        height: 130px;
-    }
-
-    .summaryBox {
-        width: 100%;
-        height: 100%;
-        justify-content: space-evenly;
-        padding: 0 40px;
-        border-radius: 0;
-        font-weight: bold;
-    }
-
-    .scores {
-        height: 60%;
-    }
-
-    .scoreBoxes {
-        height: 70px;
-    }
-
-    .resultBox > p {
-        width: 70vw;
-    }
-
-    .btn {
-        font-size: 1.1rem;
-    }
-} */
-
-@media screen and (max-width: 800px) {
-    .container {
-        width: 100%;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* Cambiado a flex-start para mejor ajuste */
-        align-items: center;
-        text-align: center;
-        padding: 0;
-    }
-
-    .resultBox {
-        width: 100%;
-        height: 45%; /* Ajustado para mejor proporción */
-        border-radius: 0 0 25px 25px;
-        padding: 10px; /* Reducido el padding */
-    }
-
-    .circle {
-        width: 120px; /* Ajustado para pantallas pequeñas */
-        height: 120px;
-    }
-
-    .summaryBox {
-        width: 100%;
-        height: 55%; /* Ajustado para mejor proporción */
-        justify-content: space-evenly;
-        padding: 10px 20px; /* Reducido el padding */
-        border-radius: 0;
-    }
-
-    .scores {
-        height: 70%; /* Ajustado para mejor uso del espacio */
-    }
-
-    .scoreBoxes {
-        height: 60px; /* Ajustado para pantallas pequeñas */
-    }
-
-    .resultBox > p {
-        width: 80%; /* Ajustado para mejor lectura */
-        margin: 0 auto; /* Centrado */
-    }
-
-    .btn {
-        font-size: 1rem; /* Ajustado para pantallas pequeñas */
-        margin: 15px 0; /* Reducido el margen */
+        border-radius: var(--border-radius);
     }
 }
